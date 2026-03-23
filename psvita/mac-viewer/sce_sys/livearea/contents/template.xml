@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<livearea style="a1">
+  <scene id="main">
+    <background>
+      <image>bg.png</image>
+    </background>
+    <gate>
+      <startup-image>startup.png</startup-image>
+    </gate>
+  </scene>
+</livearea>

@@ -1,23 +1,16 @@
-TARGET = bt_mac_viewer
-TITLE_ID = BTMAC0001
-APP_NAME = BT MAC Viewer
+TARGET = hello_world
+TITLE_ID = HELLO0001
+APP_NAME = Hello World
+APP_VER = 01.00
 
 OBJS = src/main.o
 
-CFLAGS = -O2 -Wall
-LDFLAGS =
+VITASDK ?= /usr/local/vitasdk
 
-LIBS = -lSceDisplay_stub -lSceCtrl_stub -lSceKernelThreadMgr_stub -lm
+CFLAGS = -Wl,-q -O2 -Wall
+LIBS = -lSceDebugScreen_stub -lSceDisplay_stub -lSceGxm_stub -lSceSysmodule_stub -lSceLibKernel_stub
 
-all: $(TARGET).vpk
+ICON0 = sce_sys/icon0.png
+LIVEAREA = sce_sys/livearea/contents
 
-%.vpk: %.elf
-	vita-mksfoex -s TITLE_ID=$(TITLE_ID) "$(APP_NAME)" param.sfo
-	vita-pack-vpk -s param.sfo -b $< -a sce_sys/icon0.png=sce_sys/icon0.png $@
-
-%.elf: $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
-	$(VITASDK)/bin/arm-vita-eabi-strip $@
-
-clean:
-	rm -f $(TARGET).elf $(TARGET).vpk $(OBJS) param.sfo
+include $(VITASDK)/share/vita/build.mk
