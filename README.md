@@ -13,8 +13,3 @@ Transforma a PSVita num controller para PC.
 ## Como testar o backend (sem PSVita)
 1) Entrar em `pc-backend/`
 2) Executar: `python -m bluetoothmyvita --transport tcp`
-
-Podes enviar eventos com qualquer cliente TCP (linha JSON por evento). Exemplo:
-```json
-{"type":"button","control":"cross","action":"press","value":1}
-```
